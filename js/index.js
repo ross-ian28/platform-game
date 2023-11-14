@@ -5,6 +5,7 @@ var ctx;
 // Create game variables
 var gameLoop;
 var player;
+var borders = [];
 
 var upKey;
 var downKey;
@@ -22,6 +23,16 @@ window.onload = function() {
 
 	// Create player
 	player = new Player(100, 400);
+
+	// Create Borders
+	for (let i = 0; i < 6; i++) {
+		borders.push(new Border(0 + 100 * i, 620, 100, 100, 1));
+	}
+	borders.push(new Border(0, 520, 100, 100, 2));
+
+	for (let i = 0; i < 3; i++) {
+		borders.push(new Border(600, 420 + 100 * i, 100, 100, 2));
+	}
 
 	// Start game loop
 	gameLoop = setInterval(step, 1000/30);
@@ -48,6 +59,12 @@ function draw() {
 
 	// Draw the player
 	player.draw();
+
+	// Draw the borders
+
+	for (let i = 0; i < borders.length; i++) {
+		borders[i].draw();
+	}
 }
 
 function setupInputs() {
