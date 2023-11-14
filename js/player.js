@@ -10,45 +10,46 @@ function Player(x, y) {
     this.active = true;
 
     this.step = function() {
-        // Movment 
-        if (this.active) {
-            // Horizontal Movement
-            if (!leftKey && !rightKey || leftKey && rightKey) {
-                // Slow down
-                this.xspeed *= this.friction;
-            } else if (rightKey) {
-                this.xspeed ++;
-            } else if (leftKey) {
-                this.xspeed --;
-            }
-            // Vertical Movement
-            if (upKey) {
-                // Check if on ground
+			// Movment 
+			if (this.active) {
+				// Horizontal Movement
+				if (!leftKey && !rightKey || leftKey && rightKey) {
+					// Slow down
+					this.xspeed *= this.friction;
+				} else if (rightKey) {
+					this.xspeed ++;
+				} else if (leftKey) {
+					this.xspeed --;
+				}
 
-                this.yspeed -= 15;
-            }
-            // Apply Gravity
-            this.yspeed += 5;
+				// Vertical Movement
+				if (upKey) {
+					// Check if on ground
+					this.yspeed -= 15;
+				}
 
-            // Coreect Speed
-            if (this.xspeed > this.maxSpeed) {
-                this.xspeed = this.maxSpeed;
-            } else if (this.xspeed < -this.maxSpeed) {
-                this.xspeed = -this.maxSpeed;
-            }
-            if (this.yspeed > this.maxSpeed) {
-                this.yspeed = this.maxSpeed;
-            } else if (this.yspeed < -this.maxSpeed) {
-                this.yspeed = -this.maxSpeed;
-            }
+				// Apply Gravity
+				this.yspeed += 5;
 
-            this.x += this.xspeed;
-            this.y += this.yspeed;
-        }
+				// Coreect Speed
+				if (this.xspeed > this.maxSpeed) {
+						this.xspeed = this.maxSpeed;
+				} else if (this.xspeed < -this.maxSpeed) {
+						this.xspeed = -this.maxSpeed;
+				}
+				if (this.yspeed > this.maxSpeed) {
+						this.yspeed = this.maxSpeed;
+				} else if (this.yspeed < -this.maxSpeed) {
+						this.yspeed = -this.maxSpeed;
+				}
+
+				this.x += this.xspeed;
+				this.y += this.yspeed;
+			}
     }
 
     this.draw = function() {
-        ctx.fillStyle = "green";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+			ctx.fillStyle = "green";
+			ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }
