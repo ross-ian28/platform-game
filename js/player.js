@@ -42,6 +42,22 @@ function Player(x, y) {
 				} else if (this.yspeed < -this.maxSpeed) {
 						this.yspeed = -this.maxSpeed;
 				}
+				if (this.xspeed > 0) {
+					this.xspeed = Math.floor(this.xspeed);
+				} else {
+					this.xspeed = Math.ceil(this.xspeed);
+				}
+				if (this.yspeed > 0) {
+					this.yspeed = Math.floor(this.yspeed);
+				} else {
+					this.yspeed = Math.ceil(this.yspeed);
+				}
+
+				// Horizontal Collision Rect
+				let horizontalRect = {
+					x: this.x + this.xspeed
+				}
+				// Vertical Collision Rect
 
 				this.x += this.xspeed;
 				this.y += this.yspeed;
